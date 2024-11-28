@@ -1,0 +1,50 @@
+devlop_env:
+  stage: PORD
+
+databaes:
+  100DBS:100dbs
+  200DBS:200dbs
+
+credentials:
+  ora01_user: xxxxx
+  ora01.pssswd: xxxxx
+  ora02.user: xxxxx
+  ora02.pssswd: xxxxx
+
+tns_names:
+  # Debezium 커네터가 접속할 URL은 oci로 접속해야 함(xstream 요구사항)
+  tns_oci_0001dbs: jdbc:oracle:thin@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(FAILOVER=ON)(LOAD_BALANCE=OFF))(CONNECT_DATA=(SERVICE_NAME=[Service Name])(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC))))
+  tns_oci_0001dbs: jdbc:oracle:thin@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(FAILOVER=ON)(LOAD_BALANCE=OFF))(CONNECT_DATA=(SERVICE_NAME=[Service Name])(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC))))
+  tns_oci_0002dbs: jdbc:postgresql://[IP]/xxxx_main
+  
+  # Conflunet 커네터가 접속할 URL은 thin로 접속해야 함
+  tns_thin_0001dbs: jdbc:postgresql://[IP]/xxxx_main
+  
+
+topic-prefixes:
+  topic-prefix-xxx01: DEV.CONNECT.XXXDBS_01
+  topic-prefix-xxx02: DEV.CONNECT.XXXDBS_02
+  topic-prefix-xxx03: DEV.CONNECT.XXXDBS_03
+  topic-prefix-oggbd_xxxdb: DEV.CONNECT.XXXDBS
+  
+ip_addresses:
+  bootstrap-servers: xxx.xxx.xxx.xxx:6667,xxx.xxx.xxx.xxx:6667,xxx.xxx.xxx.xxx:6667
+  redis-host: xxx.xxx.xxx.xxx
+  redis-port: 6379
+  
+spark-config:
+  spark-driver-cores: 2
+  spark-driver-memory: 2g
+  spark-executor-cores: 3
+  spark-executor-memory: 2g
+  spark-executor-instances: 2
+  spark-sql-shuffle-partitions: 6
+  spark-network-timeout: 60s
+  
+spark_log:
+  spark_log_dbhost: xxx.xxx.xxx.xxx
+  spark_log_dbport: xxxx
+  spark_log_dbname: xxxx
+  spark_log_dbuser: xxxx
+  spark_log_dbpasswd: xxxx
+  
