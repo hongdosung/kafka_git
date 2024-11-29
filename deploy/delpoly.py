@@ -9,7 +9,7 @@ args = parser.parse_args()
 branch_nm = args.branch
 
 class ApplicationConfig:
-    def __init__(self, repository_nm='spark-hds'):
+    def __init__(self, repository_nm='kafka-hds'):
         try:
             self.repository_nm = repository_nm
             self.branch_root = f'/c/vscode/{repository_nm}'
@@ -63,5 +63,5 @@ try:
 except:
     traceback_msg = traceback.format_exc()
     print(traceback_msg)
-#eles:
-#    print('deploy 완료')
+eles:
+    print('deploy 완료')
